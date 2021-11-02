@@ -6,6 +6,8 @@ const loggerMiddleware = require('../src/middleware/logger');
 
 describe('Logger Middleware', () => {
 
+  // Mock just means make a fake, just an initial
+
   let consoleSpy;// global variable that will be used to keep an on any operation that is a console log
   let req = {}; // mock req
   let res = {}; // mock res
