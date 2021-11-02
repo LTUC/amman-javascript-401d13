@@ -8,28 +8,19 @@ const app = express();
 const notFoundHandler = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
 const logger = require('./middleware/logger');
+const peopleRouter = require('./routes/people.route')
 
 const PORT = process.env.PORT || 3030;
 
+// global middleware
+app.use(logger);
+app.use(express.json());
 
-
-app.get('/hello', (req, res) => {
-  res.status(200).send(' All is good in Express Town! 🏛️');
-});
-
-app.put('/hello', (req, res) => {
-  res.status(200).send(' This is a put request!');
-});
-
-
-app.get('/error', (req, res, next) => {
-  // next('You made an Error 🛑❗');
-  throw new Error('You made an Error 🛑❗');
-});
+// to make our people routers usable, use the people route with express
+app.use(peopleRouter); // use the people routes
 
 // this is a global middleware
 app.use('*', notFoundHandler);
-app.use(logger);
 app.use(errorHandler);
 
 function start() {
