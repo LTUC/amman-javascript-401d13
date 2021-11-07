@@ -19,4 +19,5 @@ ll.append(9);
 ll.append(10);
 ll.append(11);
 
-console.log(ll);
+// console.log(ll);
+console.log(ll.toString());

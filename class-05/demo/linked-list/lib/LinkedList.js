@@ -65,6 +65,34 @@ class LinkedList {
 
     this.length += 1;
   }
+
+  /**
+   * ToString 
+   * Print the linked list in the following format
+   * 
+   * "{ a } -> { b } -> { c } -> NULL"
+   * 
+   * @return {String}
+   */
+
+  // Edge case: is the linked list is empty
+  toString() {
+    if (!this.head) {
+      return 'Linked List is Empty 🚧!';
+    }
+
+    let currentNode = this.head; // a temp variable pointer used to traverse the linkedList
+    let finalString = '';
+
+    while (currentNode.next) {
+      finalString += `{${currentNode.value}} -> `;
+      currentNode = currentNode.next;
+    }
+
+    finalString += `{${currentNode.value}} -> NULL`;
+
+    return finalString;
+  }
 }
 
 
