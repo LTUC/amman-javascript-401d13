@@ -3,9 +3,8 @@ require('dotenv').config();
 const { sequelize, DataTypes } = require('./index');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { set } = require('../server');
 const API_SECRET = process.env.API_SECRET || 'some secret word';
-const Users = sequelize.define('users', {
+const Users = sequelize.define('Users', {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -14,31 +13,26 @@ const Users = sequelize.define('users', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  token: {
-    type: DataTypes.VIRTUAL,
-  },
   role: {
     type: DataTypes.ENUM('admin', 'writer', 'editor', 'user'),
-    defaultValue: 'user',
+    defaultValue: 'user'
   },
-  capabilities: {
+  token: {
+    type: DataTypes.VIRTUAL
+  },
+  actions: {
     type: DataTypes.VIRTUAL,
     get() {
       const acl = {
         user: ['read'],
         writer: ['read', 'create'],
         editor: ['read', 'create', 'update'],
-        admin: ['read', 'create', 'update', 'delete'],
+        admin: ['read', 'create', 'update', 'delete']
       }
-      //this.role to know what is the role and return the capabilities
       return acl[this.role];
-    },
-    set() {
-      return;
     }
   }
 });
-
 // we attached a function to our Users Model
 Users.authenticateBasic = async function (username, password) {
   // get the user form the database 
@@ -69,6 +63,4 @@ Users.authenticateBearer = async function (token) {
     throw new Error('Invalid Token');
   }
 }
-
-
 module.exports = Users;
