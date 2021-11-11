@@ -5,6 +5,7 @@ class Stack {
 
   constructor() {
     this.top = null;
+    this.length = 0;
   }
 
   push(value) {
@@ -35,6 +36,7 @@ class Stack {
     const temp = this.top; // keep a reference of our top node for removal later
     this.top = this.top.next;
     temp.next = null; // removal of the last added node in the stack
+    return temp.value;
   }
 
   /**
