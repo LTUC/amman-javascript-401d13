@@ -1,0 +1,21 @@
+$primaryColor  :#267fb5;
+$secondaryColor:#ffff;
+$border-width  : 2vw;
+$black         : #222;
+
+* {
+  .content {
+    color: $secondaryColor;
+  }
+}
+
+body {
+  background-color: $primaryColor;
+
+  .content {
+
+    h1 {
+      border: solid $border-width $black;
+    }
+  }
+}
