@@ -38,7 +38,7 @@ const handleDecrement = (state) => {
   return {
     ...state,
     pizzaSlices: state.pizzaSlices - 1,
-    racoonSadState: state.racoonSadState - 1
+    racoonSadState: state.racoonSadState + 1
   }
 }
 
@@ -57,8 +57,8 @@ export default function ReducerCounter() {
         <Text fontSize='2xl'>🍕 slices #️⃣ {racoonState.pizzaSlices}</Text>
         <Text fontSize='2xl'> Total 🍕 eaten {racoonState.totalPizzaSlices}</Text>
         <Button fontSize='2xl' onClick={() => dispatch('decrement')} colorScheme='red'>💩</Button>
-        <Text fontSize='2xl'> 🦝 🙂 {racoonState.racoonHappyState}</Text>
-        <Text fontSize='2xl'> 🦝 :( {racoonState.racoonSadState}</Text>
+        <Text fontSize='2xl'> 🦝 🤤 {racoonState.racoonHappyState}</Text>
+        <Text fontSize='2xl'> 🦝 😫 {racoonState.racoonSadState}</Text>
       </VStack>
     </Center>
   )
