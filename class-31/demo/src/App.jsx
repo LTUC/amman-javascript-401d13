@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './styles/app.sass';
 
 export class App extends Component {
   render() {
