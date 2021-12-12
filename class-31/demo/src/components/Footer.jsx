@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react';
+import { SettingContext } from '../context/Site';
 
-export class Footer extends Component {
-  render() {
-    return (
-      <div>
+export default function Footer() {
+  const site = useContext(SettingContext);
 
-      </div>
-    )
-  }
+  return (
+    <footer>
+      <p>
+        Contact me through this
+
+        <a href={site.link}>
+          Link
+        </a>
+      </p>
+    </footer>
+  )
 }
-
-export default Footer

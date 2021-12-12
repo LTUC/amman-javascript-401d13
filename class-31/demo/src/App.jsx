@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import './styles/app.sass';
+import Main from './components/Main';
+import Site from './context/Site';
+import Theme from './context/Theme';
+import './styles/app.scss';
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <div>
-
-      </div>
+      <Site>
+        <Theme>
+          <Main />
+        </Theme>
+      </Site>
     )
   }
 }
