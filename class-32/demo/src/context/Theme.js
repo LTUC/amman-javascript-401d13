@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const ThemeContext = React.createContext();
 
-function Theme(props) {
+export default function Theme(props) {
 
+  const [mode, setMode] = useState('dark');
+  const toggleMode = () => setMode(mode === 'dark' ? 'light' : 'dark');
   const state = {
-    mode: 'dark'
+    mode: mode,
+    toggleMode
   };
 
   return (
@@ -14,5 +17,3 @@ function Theme(props) {
     </ThemeContext.Provider>
   );
 }
-
-export default Theme;

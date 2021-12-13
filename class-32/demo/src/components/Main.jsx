@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
 import { ThemeContext } from '../context/Theme';
-import 'normalize.css';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import SiteForm from './SiteForm';
 
 
 const styles = {
@@ -17,24 +15,23 @@ const styles = {
   },
 };
 
-export class Main extends Component {
 
-  static contextType = ThemeContext;
+export default function Main() {
+  const theme = useContext(ThemeContext);
 
-  render() {
-    console.log(this.context);
-    return (
-      <>
-        <Header />
-        <main style={styles[this.context.mode]} className={`bp3-${this.context.mode}`}>
-          <section>
-            <Content />
-          </section>
-        </main>
-        <Footer />
-      </>
-    )
-  }
+  return (
+    <>
+      <Header />
+      <main style={styles[theme.mode]} className={`bp3-${theme.mode}`}>
+        <section>
+          <Content />
+        </section>
+        <section>
+          <SiteForm />
+        </section>
+      </main>
+      <Footer />
+    </>
+  )
 }
 
-export default Main
