@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const ThemeContext = React.createContext();
 
 function Theme(props) {
 
-  const [mode, setMode] = useState('dark');
-
-  const exportedValues = {
-    mode
+  const state = {
+    mode: 'dark'
   };
 
   return (
-    <ThemeContext.Provider value={exportedValues}>
+    <ThemeContext.Provider value={state}>
       {props.children}
     </ThemeContext.Provider>
   );
