@@ -7,6 +7,8 @@ let initialState = {
   totalVotes: 0,
 };
 
+
+// basically this is our reducer
 export default (state = initialState, action) => {
   let { type, payload } = action;
 
@@ -39,6 +41,7 @@ export default (state = initialState, action) => {
   }
 };
 
+// this is the actions we can interact with our reducer function
 export const increment = (name) => {
   return {
     type: 'INCREMENT',
