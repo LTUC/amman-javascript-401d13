@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { increment, decrement, reset } from '../store/votes';
+import { increment, reset } from '../store/candidates';
 import { Button, Stack, Box, Text, Container } from '@chakra-ui/react'
 
 function Votes(props) {
   return (
     <Container centerContent>
       <Stack>
-        {props.counter.candidates.map(person => {
+        {props.candidates.map(person => {
           return (
             <Box key={person.name}>
               <Text>
@@ -15,7 +15,7 @@ function Votes(props) {
               </Text>
               <Button
                 colorScheme='yellow'
-                onClick={() => props.increment(person.name)}
+                onClick={() => props.increment(person)}
               >
                 Vote!
               </Button>
@@ -37,12 +37,12 @@ function Votes(props) {
 }
 
 const mapStateToProps = state => ({
-  counter: state.counter
+  candidates: state.candidates
 });
 
 
 // short hand version
-const mapDispatchToProps = { increment, decrement, reset };
+const mapDispatchToProps = { increment, reset };
 
 // basically we are doing this with the shorthand
 // const mapDispatchToProps = dispatch => ({

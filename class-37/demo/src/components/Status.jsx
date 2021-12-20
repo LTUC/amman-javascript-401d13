@@ -18,7 +18,7 @@ const Status = props => {
 
 // We only care about one little bit of state in this component, for display only
 const mapStateToProps = state => ({
-  totalVotes: state.counter.totalVotes,
+  totalVotes: state.votes.totalVotes,
 });
 
 // Not doing any actions, so we'll not have to "mapDispatchToProps" here

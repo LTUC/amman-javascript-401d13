@@ -1,8 +1,7 @@
 import React from 'react';
-// import './style.scss';
 import Status from './components/Status';
 import Votes from './components/Votes';
-import { ChakraProvider, Center, Container } from '@chakra-ui/react';
+import { ChakraProvider, Center } from '@chakra-ui/react';
 
 
 export default function App(props) {

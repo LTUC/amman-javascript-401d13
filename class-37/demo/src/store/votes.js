@@ -1,39 +1,28 @@
-let initialState = {
-  candidates: [
-    { name: 'Mary', votes: 0 },
-    { name: 'Bob', votes: 0 },
-    { name: 'Jamie', votes: 0 },
-  ],
-  totalVotes: 0,
+const initialState = {
+  totalVotes: 0
 };
 
 
-// basically this is our reducer
+/**
+ * {
+ *  type: 'TYPE_OF_ACTION,
+ *  payload: {} // any type of data
+ * }
+ */
+
+// reducer function
 export default (state = initialState, action) => {
-  let { type, payload } = action;
+
+  const { type, payload } = action;
 
   switch (type) {
     case 'INCREMENT':
-
-      let totalVotes = state.totalVotes + 1;
-      let candidates = state.candidates.map(candidate => {
-        if (candidate.name === payload) {
-          // Why return a new object here instead of just updating in place?
-          // Hint: pass by ...
-          return { name: candidate.name, votes: candidate.votes + 1 }
-        }
-        return candidate;
-      });
-
-      console.log('i', initialState);
-
-      // Or you can do this the shredder way ... which you'll often see in live code bases
-      // let candidates = state.candidates.map(candidate => candidate.name == payload ? { ...candidate, votes: candidate.votes + 1 } : candidate);
-
-      return { totalVotes, candidates };
+      // HERE WERE ARE GOING TO SUM THE TOTAL
+      // we want to create a copy of our state 'totalVotes' then we want to increase the number of total votes for that copied state by 1
+      // const copyState = { ...state, totalVotes: state.totalVotes + 1 };
+      return { ...state, totalVotes: state.totalVotes + 1 }
 
     case 'RESET':
-      console.log(initialState);
       return initialState;
 
     default:
@@ -41,23 +30,16 @@ export default (state = initialState, action) => {
   }
 };
 
-// this is the actions we can interact with our reducer function
-export const increment = (name) => {
+export const increment = (person) => {
   return {
     type: 'INCREMENT',
-    payload: name
-  };
-};
-
-export const decrement = (name) => {
-  return {
-    type: 'DECREMENT',
-    payload: name
+    payload: person
   };
 };
 
 export const reset = () => {
   return {
-    type: 'RESET',
+    type: 'RESET'
   };
 };
+
