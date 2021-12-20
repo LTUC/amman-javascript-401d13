@@ -1,12 +1,18 @@
+import { Container, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import { connect } from 'react-redux';
 
 const Status = props => {
 
   return (
-    <section className="status">
-      {props.totalVotes}
-    </section>
+    <Container centerContent bg='black' p={5}>
+      <Text fontSize='xl'>
+        Total Number of Votes!
+      </Text>
+      <Text fontSize='lg'>
+        {props.totalVotes}
+      </Text>
+    </Container>
   );
 }
 
